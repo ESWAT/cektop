@@ -1,7 +1,7 @@
 {
   "name": "CEKTOP",
-  "version": "0.1.0",
-  "description": "Bootstrap a website or app using GitHub Pages, with the tools you want to use.",
+  "version": "0.1.1",
+  "description": "A static site generator for GitHub Pages, powered by Grunt & Node.js.",
   "main": "Gruntfile.js",
   "dependencies": {
     "coffee-script": "~1.7.1",

@@ -1,6 +1,6 @@
 # CEKTOP
 
-CEKTOP helps you bootstrap a website or app using GitHub Pages, with the tools you want to use (instead of Jekyll or plain jane HTML/CSS/JavaScript).
+CEKTOP is a static site generator for GitHub Pages. It helps you bootstrap your website or app using a Grunt & Node.js that’s very configurable (so you’re not stuck with Jekyll or plain jane HTML/CSS/JavaScript).
 
 Out of the box CEKTOP uses the following:
 
