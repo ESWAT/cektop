@@ -1,13 +1,13 @@
 # CEKTOP
 
-CEKTOP is a static site generator for GitHub Pages. It helps you bootstrap your website or app using a Grunt & Node.js that’s very configurable (so you’re not stuck with Jekyll or plain jane HTML/CSS/JavaScript).
+CEKTOP is a static site generator for GitHub Pages. It helps you bootstrap your website or app using a Grunt & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript).
 
 Out of the box CEKTOP uses the following:
 
 - [Jade](http://jade-lang.com/) with [Markdown filter](http://jade-lang.com/reference/#filters) support
 - [Stylus](http://learnboost.github.io/stylus/) with [Nib](http://visionmedia.github.io/nib/) support
 - [CoffeeScript](http://coffeescript.org/)
-- [CoffeeLint](http://www.coffeelint.org/).
+- [CoffeeLint](http://www.coffeelint.org/)
 - [UglifyJS](http://marijnhaverbeke.nl//uglifyjs)
 - [grunt-contib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 - [grunt-gh-pages](https://github.com/tschaub/grunt-gh-pages)
