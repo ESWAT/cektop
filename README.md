@@ -14,10 +14,6 @@ Out of the box CEKTOP uses the following:
 
 If there’s a Grunt plugin for it you can use it; remove and extend things as needed. Once you’re satisfied with your work you can publish it with a single Grunt task.
 
-## Example
-
-You’re looking at it. The `master` branch of this repo contains the development files, while the `gh-pages` branch contains only the files needed for the [CEKTOP website](http://eswat.ca/cektop).
-
 ## Start
 
 You will need [Node.js](http://nodejs.org/download/) installed to use CEKTOP.
@@ -29,6 +25,16 @@ You will need [Node.js](http://nodejs.org/download/) installed to use CEKTOP.
 - `grunt build` will build production-ready files without publishing to GitHub Pages or updating the `gh-pages` branch
 - `grunt shipit` will update your `gh-pages` branch with production-ready files and publish to GitHub Pages
 - *Optional*: Install the [LiveReload extension for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) so your browser automatically refreshes whenever you make changes in development mode
+
+## Example
+
+You’re looking at it. The `master` branch of this repo contains the development files, while the `gh-pages` branch contains only the files needed for the [CEKTOP website](http://eswat.ca/cektop).
+
+The process of getting your work on GitHub Pages is pretty much…
+
+1. Download or clone CEKTOP and install dependencies
+2. Hack, hack, hack
+3. `grunt shipit`
 
 ## Structure
 
