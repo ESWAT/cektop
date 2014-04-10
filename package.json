@@ -34,12 +34,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ESWAT/CEKTOP.git"
+    "url": "git://github.com/ESWAT/cektop.git"
   },
   "author": "Philip Karpiak <operations@eswat.ca> (http://eswat.ca/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ESWAT/CEKTOP/issues"
+    "url": "https://github.com/ESWAT/cektop/issues"
   },
   "homepage": "http://eswat.ca/cektop"
 }
