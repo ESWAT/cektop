@@ -180,7 +180,7 @@ module.exports = (grunt) ->
     "connect:dev"
     "watch"
   ]
-  grunt.registerTask "prod", [
+  grunt.registerTask "preview", [
     "clean:release"
     "clean:tmp"
     "concurrent:release"
