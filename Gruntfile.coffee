@@ -1,5 +1,8 @@
 module.exports = (grunt) ->
+  require('load-grunt-tasks') grunt
+
   grunt.initConfig
+
     pkg: grunt.file.readJSON("package.json")
 
     concurrent:
@@ -169,20 +172,6 @@ module.exports = (grunt) ->
       options:
         spawn: false
         livereload: true
-
-  grunt.loadNpmTasks "grunt-coffeelint"
-  grunt.loadNpmTasks "grunt-concurrent"
-  grunt.loadNpmTasks "grunt-contrib-clean"
-  grunt.loadNpmTasks "grunt-contrib-coffee"
-  grunt.loadNpmTasks "grunt-contrib-connect"
-  grunt.loadNpmTasks "grunt-contrib-copy"
-  grunt.loadNpmTasks "grunt-contrib-jade"
-  grunt.loadNpmTasks "grunt-contrib-stylus"
-  grunt.loadNpmTasks "grunt-contrib-uglify"
-  grunt.loadNpmTasks "grunt-contrib-watch"
-  grunt.loadNpmTasks "grunt-gh-pages"
-  grunt.loadNpmTasks "grunt-newer"
-  grunt.loadNpmTasks "grunt-contrib-imagemin"
 
   grunt.registerTask "default", [
     "coffeelint"
