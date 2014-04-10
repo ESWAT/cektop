@@ -1,4 +1,6 @@
 module.exports = (grunt) ->
+
+  # load all grunt plugins defined in package.json
   require('load-grunt-tasks') grunt
 
   grunt.initConfig
@@ -173,6 +175,7 @@ module.exports = (grunt) ->
         spawn: false
         livereload: true
 
+  # Start server in development mode
   grunt.registerTask "default", [
     "coffeelint"
     "clean"
@@ -180,6 +183,8 @@ module.exports = (grunt) ->
     "connect:dev"
     "watch"
   ]
+
+  # Start server in preview mode
   grunt.registerTask "preview", [
     "clean:release"
     "clean:tmp"
@@ -188,6 +193,8 @@ module.exports = (grunt) ->
     "clean:tmp"
     "connect:release"
   ]
+
+  # Build optimized files
   grunt.registerTask "build", [
     "clean:release"
     "clean:tmp"
@@ -195,6 +202,8 @@ module.exports = (grunt) ->
     "concurrent:optimize"
     "clean:tmp"
   ]
+
+  # Deploy to GitHub Pages
   grunt.registerTask "shipit", [
     "clean:release"
     "clean:tmp"
