@@ -19,7 +19,7 @@ If there’s a Grunt plugin for it you can use it; remove and extend things as n
 You will need [Node.js](http://nodejs.org/download/) installed to use CEKTOP.
 
 - Download the [latest release](https://github.com/ESWAT/CEKTOP/releases) or clone the repo `git clone https://github.com/ESWAT/CEKTOP.git`
-- `npm install -g grunt-cli coffee-script` if you do not have Grunt or CoffeeScript installed
+- `npm install -g grunt-cli` if you do not have the Grunt CLI installed
 - `npm install` for remaining dependencies
 - `grunt` starts a server in development mode while `grunt preview` starts it in preview mode, which optimizes your files as if you were ready to publish (both can be seen at [localhost:8000](http://localhost:8000/))
 - `grunt build` will build production-ready files without publishing to GitHub Pages or updating the `gh-pages` branch
