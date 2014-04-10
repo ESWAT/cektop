@@ -87,6 +87,7 @@ module.exports = (grunt) ->
           title: "<%= pkg.name %>"
           author: "<%= pkg.author %>"
           description: "<%= pkg.description %>"
+          version: "<%= pkg.version %>"
 
       dev:
         files: [
