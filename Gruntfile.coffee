@@ -1,5 +1,10 @@
 module.exports = (grunt) ->
+
+  # load all grunt plugins defined in package.json
+  require('load-grunt-tasks') grunt
+
   grunt.initConfig
+
     pkg: grunt.file.readJSON("package.json")
 
     concurrent:
@@ -87,6 +92,7 @@ module.exports = (grunt) ->
           title: "<%= pkg.name %>"
           author: "<%= pkg.author %>"
           description: "<%= pkg.description %>"
+          version: "<%= pkg.version %>"
 
       dev:
         files: [
@@ -169,20 +175,7 @@ module.exports = (grunt) ->
         spawn: false
         livereload: true
 
-  grunt.loadNpmTasks "grunt-coffeelint"
-  grunt.loadNpmTasks "grunt-concurrent"
-  grunt.loadNpmTasks "grunt-contrib-clean"
-  grunt.loadNpmTasks "grunt-contrib-coffee"
-  grunt.loadNpmTasks "grunt-contrib-connect"
-  grunt.loadNpmTasks "grunt-contrib-copy"
-  grunt.loadNpmTasks "grunt-contrib-jade"
-  grunt.loadNpmTasks "grunt-contrib-stylus"
-  grunt.loadNpmTasks "grunt-contrib-uglify"
-  grunt.loadNpmTasks "grunt-contrib-watch"
-  grunt.loadNpmTasks "grunt-gh-pages"
-  grunt.loadNpmTasks "grunt-newer"
-  grunt.loadNpmTasks "grunt-contrib-imagemin"
-
+  # Start server in development mode
   grunt.registerTask "default", [
     "coffeelint"
     "clean"
@@ -190,7 +183,9 @@ module.exports = (grunt) ->
     "connect:dev"
     "watch"
   ]
-  grunt.registerTask "prod", [
+
+  # Start server in preview mode
+  grunt.registerTask "preview", [
     "clean:release"
     "clean:tmp"
     "concurrent:release"
@@ -198,6 +193,8 @@ module.exports = (grunt) ->
     "clean:tmp"
     "connect:release"
   ]
+
+  # Build optimized files
   grunt.registerTask "build", [
     "clean:release"
     "clean:tmp"
@@ -205,6 +202,8 @@ module.exports = (grunt) ->
     "concurrent:optimize"
     "clean:tmp"
   ]
+
+  # Deploy to GitHub Pages
   grunt.registerTask "shipit", [
     "clean:release"
     "clean:tmp"
