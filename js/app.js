@@ -1,1 +1,1 @@
-(function(){var a,b,c,d,e,f,g,h,i=[].slice;e=42,f=!0,f&&(e=-42),h=function(a){return a*a},b=[1,2,3,4,5],c={root:Math.sqrt,square:h,cube:function(a){return a*h(a)}},g=function(){var a,b;return b=arguments[0],a=2<=arguments.length?i.call(arguments,1):[],print(b,a)},"undefined"!=typeof elvis&&null!==elvis&&alert("I knew it!"),a=function(){var a,e,f;for(f=[],a=0,e=b.length;e>a;a++)d=b[a],f.push(c.cube(d));return f}(),console.log("wthf")}).call(this);
+(function(){}).call(this);
