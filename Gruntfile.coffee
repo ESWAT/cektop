@@ -149,7 +149,7 @@ module.exports = (grunt) ->
     watch:
       jade:
         files: ["src/**/*.jade"]
-        tasks: ["newer:jade:dev"]
+        tasks: ["jade:dev"]
 
       stylus:
         files: ["src/stylus/*.styl"]
