@@ -152,15 +152,15 @@ module.exports = (grunt) ->
         tasks: ["jade:dev"]
 
       stylus:
-        files: ["src/stylus/*.styl"]
+        files: ["src/stylus/**/*.styl"]
         tasks: ["stylus:dev"]
 
       coffee:
-        files: ["src/script/*.coffee"]
+        files: ["src/script/**/*.coffee"]
         tasks: ["newer:coffee:dev"]
 
       js:
-        files: ["src/script/*.js"]
+        files: ["src/script/**/*.js"]
         tasks: ["newer:copy:script"]
 
       assets:
