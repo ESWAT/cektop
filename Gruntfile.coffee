@@ -65,7 +65,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           flatten: true
-          src: ["src/script/*.js"]
+          src: ["src/script/**/*.js"]
           dest: "release/js/"
         ]
 
@@ -98,7 +98,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "src"
-          src: ["*.jade"]
+          src: ["**/*.jade"]
           dest: "release"
           ext: ".html"
         ]
@@ -109,7 +109,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "src"
-          src: ["*.jade"]
+          src: ["**/*.jade"]
           dest: "release"
           ext: ".html"
         ]
@@ -119,7 +119,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "src/stylus"
-          src: ["*.styl"]
+          src: ["**/*.styl"]
           dest: "release/css"
           ext: ".css"
         ]
@@ -131,7 +131,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "src/stylus"
-          src: ["*.styl"]
+          src: ["**/*.styl"]
           dest: "release/css"
           ext: ".css"
         ]
@@ -141,7 +141,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "release/tmp"
-          src: ["*.js"]
+          src: ["**/*.js"]
           dest: "release/js"
           ext: ".js"
         ]
