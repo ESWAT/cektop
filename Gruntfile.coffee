@@ -59,6 +59,9 @@ module.exports = (grunt) ->
 
     coffeelint:
       app: ['src/script/*.coffee']
+      options:
+        max_line_length:
+          value: 120
 
     copy:
       js:
