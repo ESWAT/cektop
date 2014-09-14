@@ -22,7 +22,7 @@ module.exports = (grunt) ->
       ]
       optimize: [
         "uglify"
-        "newer:imagemin"
+        "imagemin"
       ]
 
     "gh-pages":
