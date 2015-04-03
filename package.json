@@ -1,6 +1,6 @@
 {
   "name": "CEKTOP",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A static site generator for GitHub Pages, powered by Grunt & Node.js.",
   "main": "Gruntfile.js",
   "private": true,
