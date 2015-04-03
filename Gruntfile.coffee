@@ -42,8 +42,7 @@ module.exports = (grunt) ->
           keepalive: true
 
     clean:
-      dev: ["release"]
-      release: ["release",]
+      release: ["release"]
       tmp: [ "release/tmp"]
 
     coffee:
@@ -190,7 +189,6 @@ module.exports = (grunt) ->
   # Start server in preview mode
   grunt.registerTask "preview", [
     "clean:release"
-    "clean:tmp"
     "concurrent:release"
     "concurrent:optimize"
     "clean:tmp"
@@ -200,7 +198,6 @@ module.exports = (grunt) ->
   # Build optimized files
   grunt.registerTask "build", [
     "clean:release"
-    "clean:tmp"
     "concurrent:release"
     "concurrent:optimize"
     "clean:tmp"
@@ -209,7 +206,6 @@ module.exports = (grunt) ->
   # Deploy to GitHub Pages
   grunt.registerTask "shipit", [
     "clean:release"
-    "clean:tmp"
     "concurrent:release"
     "concurrent:optimize"
     "clean:tmp"
