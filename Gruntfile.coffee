@@ -56,12 +56,6 @@ module.exports = (grunt) ->
         files:
           "release/tmp/app.js": ["src/script/*.coffee"]
 
-    coffeelint:
-      app: ['src/script/*.coffee']
-      options:
-        max_line_length:
-          value: 120
-
     copy:
       js:
         files: [
@@ -179,7 +173,6 @@ module.exports = (grunt) ->
 
   # Start server in development mode
   grunt.registerTask "default", [
-    "coffeelint"
     "clean"
     "concurrent:dev"
     "connect:dev"
