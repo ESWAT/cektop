@@ -7,7 +7,6 @@ Out of the box CEKTOP uses the following:
 - [Jade](http://jade-lang.com/) with [Markdown filter](http://jade-lang.com/reference/#filters) support
 - [Stylus](http://learnboost.github.io/stylus/) with [Nib](http://visionmedia.github.io/nib/) support
 - [CoffeeScript](http://coffeescript.org/)
-- [CoffeeLint](http://www.coffeelint.org/)
 - [UglifyJS](http://marijnhaverbeke.nl//uglifyjs)
 - [grunt-contib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 - [grunt-gh-pages](https://github.com/tschaub/grunt-gh-pages)
