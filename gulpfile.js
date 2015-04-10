@@ -4,6 +4,7 @@ var del = require('del');
 var ghPages = require('gulp-gh-pages');
 var imagemin = require('gulp-imagemin');
 var jade = require('gulp-jade');
+var runSequence = require('run-sequence');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
@@ -37,16 +38,16 @@ gulp.task('watch', function () {
   gulp.watch(paths.assets, ['assets']);
 });
 
-gulp.task('assets', function() {
-  gulp.src(paths.assets)
-    .pipe(gulp.dest(paths.release + 'assets/'));
-});
-
 gulp.task('deploy', function() {
-  gulp.src(paths.release)
+  gulp.src('./release/**/*')
     .pipe(ghPages({
       push: false
     }));
+});
+
+gulp.task('assets', function() {
+  return gulp.src(paths.assets)
+    .pipe(gulp.dest(paths.release + 'assets/'));
 });
 
 gulp.task('connect:dev', function() {
@@ -65,30 +66,30 @@ gulp.task('connect:rel', function() {
 });
 
 gulp.task('imagemin:dev', function() {
-  gulp.src(paths.images)
+  return gulp.src(paths.images)
     .pipe(gulp.dest(paths.release + 'images/'))
 });
 
 gulp.task('imagemin:rel', function() {
-  gulp.src(paths.images)
+  return gulp.src(paths.images)
     .pipe(imagemin())
     .pipe(gulp.dest(paths.release + 'images/'))
 });
 
 gulp.task('js:dev', function() {
-  gulp.src(paths.scripts)
+  return gulp.src(paths.scripts)
     .pipe(gulp.dest(paths.release + 'js/'))
     .pipe(connect.reload());
 });
 
 gulp.task('js:rel', function() {
-  gulp.src(paths.scripts)
+  return gulp.src(paths.scripts)
     .pipe(uglify())
     .pipe(gulp.dest(paths.release + 'js/'))
 });
 
 gulp.task('jade:dev', function() {
-  gulp.src(paths.jade)
+  return gulp.src(paths.jade)
     .pipe(jade({
       pretty: true,
       locals: locals
@@ -98,13 +99,13 @@ gulp.task('jade:dev', function() {
 });
 
 gulp.task('jade:rel', function() {
-  gulp.src(paths.jade)
+  return gulp.src(paths.jade)
     .pipe(jade())
     .pipe(gulp.dest(paths.release))
 });
 
 gulp.task('stylus:dev', function() {
-  gulp.src(paths.stylus)
+  return gulp.src(paths.stylus)
     .pipe(sourcemaps.init())
     .pipe(stylus({
       lineos: true
@@ -115,7 +116,7 @@ gulp.task('stylus:dev', function() {
 });
 
 gulp.task('stylus:rel', function() {
-  gulp.src(paths.stylus)
+  return gulp.src(paths.stylus)
     .pipe(stylus({
       compress: true
     }))
@@ -148,17 +149,17 @@ gulp.task('preview', ['clean'], function() {
 });
 
 // Build optimized files
-gulp.task('build', ['clean'], function() {
-  gulp.start(
+gulp.task('build', function(cb) {
+  runSequence('clean', [
     'jade:rel',
     'stylus:rel',
     'js:rel',
     'assets',
     'imagemin:rel'
-  );
+  ], cb)
 });
 
 // Deploy to GitHub Pages
-gulp.task('shipit', ['build'], function() {
-  gulp.start('deploy');
+gulp.task('shipit', function(cb) {
+  runSequence('build', 'deploy', cb);
 });
