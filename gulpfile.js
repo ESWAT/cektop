@@ -124,28 +124,31 @@ gulp.task('stylus:rel', function() {
 });
 
 // Start server in development mode
-gulp.task('default', ['clean'], function() {
-  gulp.start(
-    'jade:dev',
-    'stylus:dev',
-    'js:dev',
-    'assets',
-    'imagemin:dev',
-    'connect:dev',
-    'watch'
-  );
+gulp.task('default', ['clean'], function(cb) {
+  runSequence([
+      'jade:dev',
+      'stylus:dev',
+      'js:dev',
+      'assets',
+      'imagemin:dev',
+    ], [
+      'connect:dev',
+      'watch'
+    ]
+  , cb);
 });
 
 // Start server in preview mode
-gulp.task('preview', ['clean'], function() {
-  gulp.start(
-    'jade:rel',
-    'stylus:rel',
-    'js:rel',
-    'assets',
-    'imagemin:rel',
+gulp.task('preview', ['clean'], function(cb) {
+  runSequence([
+      'jade:rel',
+      'stylus:rel',
+      'js:rel',
+      'assets',
+      'imagemin:rel',
+    ],
     'connect:rel'
-  );
+  , cb);
 });
 
 // Build optimized files
