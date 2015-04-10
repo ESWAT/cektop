@@ -43,8 +43,10 @@ gulp.task('assets', function() {
 });
 
 gulp.task('deploy', function() {
-  return gulp.src(paths.release)
-    .pipe(ghPages());
+  gulp.src(paths.release)
+    .pipe(ghPages({
+      push: false
+    }));
 });
 
 gulp.task('connect:dev', function() {
@@ -136,7 +138,6 @@ gulp.task('default', ['clean'], function() {
 // Start server in preview mode
 gulp.task('preview', ['clean'], function() {
   gulp.start(
-    'clean',
     'jade:rel',
     'stylus:rel',
     'js:rel',
@@ -149,11 +150,15 @@ gulp.task('preview', ['clean'], function() {
 // Build optimized files
 gulp.task('build', ['clean'], function() {
   gulp.start(
-    'clean',
     'jade:rel',
     'stylus:rel',
     'js:rel',
     'assets',
     'imagemin:rel'
   );
+});
+
+// Deploy to GitHub Pages
+gulp.task('shipit', ['build'], function() {
+  gulp.start('deploy');
 });
