@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "del": "^1.1.1",
-    "gulp": "~3.8.11",
+    "gulp": "^3.8.11",
     "gulp-connect": "^2.2.0",
     "gulp-gh-pages": "^0.5.0",
     "gulp-imagemin": "^2.2.1",
@@ -20,10 +20,9 @@
     "gulp-sourcemaps": "^1.5.1",
     "gulp-stylus": "^2.0.1",
     "gulp-uglify": "^1.1.0",
-    "jade": "~1.9.2",
-    "markdown-js": "0.0.3",
-    "stylus": "~0.50.0",
-    "uglify-js": "~2.4.15"
+    "jade": "^1.9.2",
+    "stylus": "^50.0",
+    "uglify-js": "^2.4.15"
   },
   "repository": {
     "type": "git",
