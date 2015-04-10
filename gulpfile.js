@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var del = require('del');
+var ghPages = require('gulp-gh-pages');
 var imagemin = require('gulp-imagemin');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
@@ -39,6 +40,11 @@ gulp.task('watch', function () {
 gulp.task('assets', function() {
   gulp.src(paths.assets)
     .pipe(gulp.dest(paths.release + 'assets/'));
+});
+
+gulp.task('deploy', function() {
+  return gulp.src(paths.release)
+    .pipe(ghPages());
 });
 
 gulp.task('connect:dev', function() {
