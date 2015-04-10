@@ -1,28 +1,21 @@
 # CEKTOP
 
-CEKTOP is a static site generator for GitHub Pages. It helps you bootstrap your website or app using a Grunt & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript.
+CEKTOP is a static site generator for GitHub Pages. It helps you bootstrap your website or app using a Gulp & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript.
 
-Out of the box CEKTOP uses the following:
+Out of the box CEKTOP compiles Jade and Stylus files, compresses JS files with UglifyJS and compresses images with gulp-imagemin.
 
-- [Jade](http://jade-lang.com/) with [Markdown filter](http://jade-lang.com/reference/#filters) support
-- [Stylus](http://learnboost.github.io/stylus/) with [Nib](http://visionmedia.github.io/nib/) support
-- [CoffeeScript](http://coffeescript.org/)
-- [UglifyJS](http://marijnhaverbeke.nl//uglifyjs)
-- [grunt-contib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
-- [grunt-gh-pages](https://github.com/tschaub/grunt-gh-pages)
-
-If there’s a Grunt plugin for it you can use it; remove and extend things as needed. Once you’re satisfied with your work you can publish it with a single Grunt task.
+If there’s a Gulp plugin for it you can use it; remove and extend things as needed. Once you’re satisfied with your work you can publish it with a single Gulp task.
 
 ## Start
 
 You will need [Node.js](http://nodejs.org/download/) installed to use CEKTOP.
 
 - Download the [latest release](https://github.com/ESWAT/CEKTOP/releases) or clone the repo `git clone https://github.com/ESWAT/CEKTOP.git`
-- `npm install -g grunt-cli` if you do not have the Grunt CLI installed
+- `npm install -g gulp` if you do not have Gulp installed
 - `npm install` for remaining dependencies
-- `grunt` starts a server in development mode while `grunt preview` starts it in preview mode, which optimizes your files as if you were ready to publish (both can be seen at [localhost:8000](http://localhost:8000/))
-- `grunt build` will build production-ready files without publishing to GitHub Pages or updating the `gh-pages` branch
-- `grunt shipit` will update your `gh-pages` branch with production-ready files and publish to GitHub Pages
+- `gulp` starts a server in development mode while `gulp preview` starts it in preview mode, which optimizes your files as if you were ready to publish (both can be seen at [localhost:8000](http://localhost:8000/))
+- `gulp build` will build production-ready files without publishing to GitHub Pages or updating the `gh-pages` branch
+- `gulp shipit` will update your `gh-pages` branch with production-ready files and publish to GitHub Pages
 - *Optional*: Install the [LiveReload extension for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) so your browser automatically refreshes whenever you make changes in development mode
 
 ## Example
@@ -33,27 +26,28 @@ The process of getting your work on GitHub Pages is pretty much…
 
 1. Download or clone CEKTOP and install dependencies
 2. Hack, hack, hack
-3. `grunt shipit`
+3. `gulp shipit`
 
 ## Structure
 
-All your development work is done in the `src` directory. The files in `src` will be compiled and copied to the `release` directory as you work. The `release` directory is also used when publishing to GitHub Pages (see [grunt-gh-pages](https://github.com/tschaub/grunt-gh-pages) for details on the process). This directory will be cleaned up whenever you run a Grunt task and populated with the files necessary for that environment. So during development these files will be more verbose to help with debugging, but will be optimized when using any of the Grunt tasks that produces production-ready files.
+All your development work is done in the `src` directory. The files in `src` will be compiled and copied to the `release` directory as you work. The `release` directory is also used when publishing to GitHub Pages (see [gulp-gh-pages](https://github.com/shinnn/gulp-gh-pages) for details on the process). This directory will be cleaned up whenever you run a Gulp task and populated with the files necessary for that environment. So during development these files will be more verbose to help with debugging, but will be optimized when using any of the Gulp tasks that produces production-ready files.
 
 ```
 ├─ src/
 │ ├─ assets/
+│ ├─ images/
 │ ├─ script/
 │ └─ stylus/
 ├─ release/
 │ └─ assets/
+│ ├─ images/
 │ ├─ js/
 │ ├─ css/
-├─ Gruntfile.coffee
-├─ Gruntfile.js
+├─ gulpfile.js
 ├─ package.json
 ```
 
-Most of the magic is done in `Gruntfile.coffee`, so take a look at that if you want to make modifications. Your Jade files also have visibility to some of the information stored in `package.json`, which you should modify to suit your project (you can see what is exposed in `Gruntfile.coffee` under the Jade task). `Gruntfile.js` is just a middleman to enable parsing our Gruntfile with CoffeeScript.
+All of the magic is done in `gulpfile.js`, so take a look at that if you want to make modifications. Your Jade files also have visibility to some of the information stored in `package.json`, which you should modify to suit your project (you can see what is exposed in `gulpfile.js` under the Jade task).
 
 ## License
 
