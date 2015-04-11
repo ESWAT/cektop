@@ -1,4 +1,5 @@
 var gulp        = require('gulp'),
+    babel       = require('gulp-babel'),
     connect     = require('gulp-connect'),
     del         = require('del'),
     ghPages     = require('gulp-gh-pages'),
@@ -82,12 +83,16 @@ gulp.task('imagemin:rel', function() {
 
 gulp.task('js:dev', function() {
   return gulp.src(paths.scripts)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.release + 'js/'))
     .pipe(connect.reload());
 });
 
 gulp.task('js:rel', function() {
   return gulp.src(paths.scripts)
+    .pipe(babel())
     .pipe(uglify())
     .pipe(gulp.dest(paths.release + 'js/'))
 });
