@@ -82,7 +82,7 @@ gulp.task('imagemin:rel', function() {
 });
 
 gulp.task('js:dev', function() {
-  return gulp.src(paths.scripts)
+  return gulp.src([paths.scripts, '!**/_*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
@@ -91,14 +91,14 @@ gulp.task('js:dev', function() {
 });
 
 gulp.task('js:rel', function() {
-  return gulp.src(paths.scripts)
+  return gulp.src([paths.scripts, '!**/_*.js'])
     .pipe(babel())
     .pipe(uglify())
     .pipe(gulp.dest(paths.release + 'js/'))
 });
 
 gulp.task('jade:dev', function() {
-  return gulp.src(paths.jade)
+  return gulp.src([paths.jade, '!**/_*.jade'])
     .pipe(jade({
       pretty: true,
       locals: locals
@@ -108,7 +108,7 @@ gulp.task('jade:dev', function() {
 });
 
 gulp.task('jade:rel', function() {
-  return gulp.src(paths.jade)
+  return gulp.src([paths.jade, '!**/_*.jade'])
     .pipe(jade({
       locals: locals
     }))
@@ -116,7 +116,7 @@ gulp.task('jade:rel', function() {
 });
 
 gulp.task('stylus:dev', function() {
-  return gulp.src(paths.stylus)
+  return gulp.src([paths.stylus, '!**/_*.styl'])
     .pipe(sourcemaps.init())
     .pipe(stylus({
       lineos: true
@@ -127,7 +127,7 @@ gulp.task('stylus:dev', function() {
 });
 
 gulp.task('stylus:rel', function() {
-  return gulp.src(paths.stylus)
+  return gulp.src([paths.stylus, '!**/_*.styl'])
     .pipe(stylus({
       compress: true
     }))
