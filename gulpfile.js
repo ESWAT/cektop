@@ -41,9 +41,7 @@ gulp.task('watch', function () {
 
 gulp.task('deploy', function() {
   gulp.src('./release/**/*')
-    .pipe(ghPages({
-      push: false
-    }));
+    .pipe(ghPages());
 });
 
 gulp.task('assets', function() {
@@ -106,7 +104,9 @@ gulp.task('jade:dev', function() {
 
 gulp.task('jade:rel', function() {
   return gulp.src(paths.jade)
-    .pipe(jade())
+    .pipe(jade({
+      locals: locals
+    }))
     .pipe(gulp.dest(paths.release))
 });
 
