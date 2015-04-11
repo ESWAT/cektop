@@ -12,6 +12,7 @@ var pkg = require('./package.json');
 
 var paths = {
   assets  : 'src/assets/**/*',
+  cname   : 'src/CNAME',
   images  : 'src/images/**/*.{png,jpg,gif}',
   jade    : 'src/**/*.jade',
   scripts : 'src/script/**/*.js',
@@ -48,6 +49,11 @@ gulp.task('deploy', function() {
 gulp.task('assets', function() {
   return gulp.src(paths.assets)
     .pipe(gulp.dest(paths.release + 'assets/'));
+});
+
+gulp.task('cname', function() {
+  return gulp.src(paths.cname)
+    .pipe(gulp.dest(paths.release));
 });
 
 gulp.task('connect:dev', function() {
@@ -158,6 +164,7 @@ gulp.task('build', function(cb) {
     'stylus:rel',
     'js:rel',
     'assets',
+    'cname',
     'imagemin:rel'
   ], cb)
 });
