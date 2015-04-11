@@ -1,14 +1,14 @@
-var gulp = require('gulp');
-var connect = require('gulp-connect');
-var del = require('del');
-var ghPages = require('gulp-gh-pages');
-var imagemin = require('gulp-imagemin');
-var jade = require('gulp-jade');
-var runSequence = require('run-sequence');
-var stylus = require('gulp-stylus');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var pkg = require('./package.json');
+var gulp        = require('gulp'),
+    connect     = require('gulp-connect'),
+    del         = require('del'),
+    ghPages     = require('gulp-gh-pages'),
+    imagemin    = require('gulp-imagemin'),
+    jade        = require('gulp-jade'),
+    runSequence = require('run-sequence'),
+    stylus      = require('gulp-stylus'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    uglify      = require('gulp-uglify'),
+    pkg         = require('./package.json')
 
 var paths = {
   assets  : 'src/assets/**/*',
