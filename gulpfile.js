@@ -36,7 +36,7 @@ gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['js:dev']);
   gulp.watch(paths.jade, ['jade:dev']);
   gulp.watch(paths.stylus, ['stylus:dev']);
-  gulp.watch(paths.images, ['images:dev']);
+  gulp.watch(paths.images, ['imagemin:dev']);
   gulp.watch(paths.assets, ['assets']);
 });
 
