@@ -5,6 +5,7 @@ var gulp        = require('gulp'),
     ghPages     = require('gulp-gh-pages'),
     imagemin    = require('gulp-imagemin'),
     jade        = require('gulp-jade'),
+    plumber     = require('gulp-plumber'),
     runSequence = require('run-sequence'),
     stylus      = require('gulp-stylus'),
     sourcemaps  = require('gulp-sourcemaps'),
@@ -47,6 +48,7 @@ gulp.task('deploy', function() {
 
 gulp.task('assets', function() {
   return gulp.src(paths.assets)
+    .pipe(plumber())
     .pipe(gulp.dest(paths.release + 'assets/'));
 });
 
@@ -72,6 +74,7 @@ gulp.task('connect:rel', function() {
 
 gulp.task('imagemin:dev', function() {
   return gulp.src(paths.images)
+    .pipe(plumber())
     .pipe(gulp.dest(paths.release + 'images/'))
 });
 
@@ -83,6 +86,7 @@ gulp.task('imagemin:rel', function() {
 
 gulp.task('js:dev', function() {
   return gulp.src([paths.scripts, '!**/_*.js'])
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
@@ -99,6 +103,7 @@ gulp.task('js:rel', function() {
 
 gulp.task('jade:dev', function() {
   return gulp.src([paths.jade, '!**/_*.jade'])
+    .pipe(plumber())
     .pipe(jade({
       pretty: true,
       locals: locals
@@ -117,6 +122,7 @@ gulp.task('jade:rel', function() {
 
 gulp.task('stylus:dev', function() {
   return gulp.src([paths.stylus, '!**/_*.styl'])
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(stylus({
       lineos: true
