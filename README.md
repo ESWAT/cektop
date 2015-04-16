@@ -1,6 +1,10 @@
 # CEKTOP
 
-CEKTOP is a static site generator for GitHub Pages. It helps you bootstrap your website or app using a Gulp & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript.
+[![Dependency Status](https://david-dm.org/eswat/cektop.svg)](https://david-dm.org/eswat/cektop)
+
+> A static site generator for GitHub Pages
+
+CEKTOP helps you bootstrap your website or app using a Gulp & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript.
 
 Out of the box CEKTOP compiles Jade and Stylus files, compresses JS files with UglifyJS and compresses images with gulp-imagemin.
 
