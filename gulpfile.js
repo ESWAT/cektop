@@ -5,6 +5,7 @@ var gulp        = require('gulp'),
     ghPages     = require('gulp-gh-pages'),
     imagemin    = require('gulp-imagemin'),
     jade        = require('gulp-jade'),
+    nib         = require('nib'),
     plumber     = require('gulp-plumber'),
     runSequence = require('run-sequence'),
     stylus      = require('gulp-stylus'),
@@ -125,7 +126,8 @@ gulp.task('stylus:dev', function() {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(stylus({
-      lineos: true
+      lineos: true,
+      use: nib()
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.release + 'css/'))
@@ -135,7 +137,8 @@ gulp.task('stylus:dev', function() {
 gulp.task('stylus:rel', function() {
   return gulp.src([paths.stylus, '!**/_*.styl'])
     .pipe(stylus({
-      compress: true
+      compress: true,
+      use: nib()
     }))
     .pipe(gulp.dest(paths.release + 'css/'))
 });

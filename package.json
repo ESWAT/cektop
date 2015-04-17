@@ -1,6 +1,6 @@
 {
   "name": "CEKTOP",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A static site generator for GitHub Pages, powered by Gulp & Node.js.",
   "main": "gulpfile.js",
   "private": true,
@@ -23,6 +23,7 @@
     "gulp-stylus": "^2.0.1",
     "gulp-uglify": "^1.1.0",
     "jade": "^1.9.2",
+    "nib": "^1.1.0",
     "run-sequence": "^1.0.2",
     "stylus": "^0.50.0",
     "uglify-js": "^2.4.15"
