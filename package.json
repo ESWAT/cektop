@@ -22,11 +22,8 @@
     "gulp-sourcemaps": "^1.5.1",
     "gulp-stylus": "^2.0.1",
     "gulp-uglify": "^1.1.0",
-    "jade": "^1.9.2",
     "nib": "^1.1.0",
-    "run-sequence": "^1.0.2",
-    "stylus": "^0.50.0",
-    "uglify-js": "^2.4.15"
+    "run-sequence": "^1.0.2"
   },
   "repository": {
     "type": "git",
