@@ -1,17 +1,19 @@
-var gulp        = require('gulp'),
+var pkg         = require('./package.json'),
+    gulp        = require('gulp'),
+
     babel       = require('gulp-babel'),
     connect     = require('gulp-connect'),
+    cssnext     = require("cssnext"),
     del         = require('del'),
     ghPages     = require('gulp-gh-pages'),
     imagemin    = require('gulp-imagemin'),
     jade        = require('gulp-jade'),
     nib         = require('nib'),
     plumber     = require('gulp-plumber'),
+    postcss     = require('gulp-postcss'),
     runSequence = require('run-sequence'),
-    stylus      = require('gulp-stylus'),
     sourcemaps  = require('gulp-sourcemaps'),
-    uglify      = require('gulp-uglify'),
-    pkg         = require('./package.json')
+    uglify      = require('gulp-uglify');
 
 var paths = {
   assets  : 'src/assets/**/*',
@@ -19,7 +21,7 @@ var paths = {
   images  : 'src/images/**/*.{png,jpg,gif}',
   jade    : 'src/**/*.jade',
   scripts : 'src/script/**/*.js',
-  stylus  : 'src/stylus/**/*.styl',
+  css     : 'src/css/**/*.css',
   release : 'release/'
 };
 
@@ -37,7 +39,7 @@ gulp.task('clean', function(cb) {
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['js:dev']);
   gulp.watch(paths.jade, ['jade:dev']);
-  gulp.watch(paths.stylus, ['stylus:dev']);
+  gulp.watch(paths.css, ['css:dev']);
   gulp.watch(paths.images, ['imagemin:dev']);
   gulp.watch(paths.assets, ['assets']);
 });
@@ -121,25 +123,28 @@ gulp.task('jade:rel', function() {
     .pipe(gulp.dest(paths.release))
 });
 
-gulp.task('stylus:dev', function() {
-  return gulp.src([paths.stylus, '!**/_*.styl'])
+gulp.task('css:dev', function() {
+  return gulp.src([paths.css, '!**/_*.css'])
     .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(stylus({
-      lineos: true,
-      use: nib()
-    }))
+      .pipe(sourcemaps.init())
+    .pipe(postcss([
+      cssnext({
+        browsers: ['last 1 version']
+      })
+    ]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.release + 'css/'))
     .pipe(connect.reload());
 });
 
-gulp.task('stylus:rel', function() {
-  return gulp.src([paths.stylus, '!**/_*.styl'])
-    .pipe(stylus({
-      compress: true,
-      use: nib()
-    }))
+gulp.task('css:rel', function() {
+  return gulp.src([paths.css, '!**/_*.css'])
+  .pipe(postcss([
+    cssnext({
+      browsers: ['last 1 version'],
+      compress: true
+    })
+  ]))
     .pipe(gulp.dest(paths.release + 'css/'))
 });
 
@@ -147,7 +152,7 @@ gulp.task('stylus:rel', function() {
 gulp.task('default', ['clean'], function(cb) {
   runSequence([
       'jade:dev',
-      'stylus:dev',
+      'css:dev',
       'js:dev',
       'assets',
       'imagemin:dev',
@@ -162,7 +167,7 @@ gulp.task('default', ['clean'], function(cb) {
 gulp.task('preview', ['clean'], function(cb) {
   runSequence([
       'jade:rel',
-      'stylus:rel',
+      'csss:rel',
       'js:rel',
       'assets',
       'imagemin:rel',
@@ -175,7 +180,7 @@ gulp.task('preview', ['clean'], function(cb) {
 gulp.task('build', function(cb) {
   runSequence('clean', [
     'jade:rel',
-    'stylus:rel',
+    'css:rel',
     'js:rel',
     'assets',
     'cname',
