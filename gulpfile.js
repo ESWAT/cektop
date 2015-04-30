@@ -8,6 +8,7 @@ var pkg         = require('./package.json'),
     ghPages     = require('gulp-gh-pages'),
     imagemin    = require('gulp-imagemin'),
     jade        = require('gulp-jade'),
+    nested      = require('postcss-nested'),
     nib         = require('nib'),
     plumber     = require('gulp-plumber'),
     postcss     = require('gulp-postcss'),
@@ -128,6 +129,7 @@ gulp.task('css:dev', function() {
     .pipe(plumber())
       .pipe(sourcemaps.init())
     .pipe(postcss([
+      nested,
       cssnext({
         browsers: ['last 1 version']
       })
@@ -140,6 +142,7 @@ gulp.task('css:dev', function() {
 gulp.task('css:rel', function() {
   return gulp.src([paths.css, '!**/_*.css'])
   .pipe(postcss([
+    nested,
     cssnext({
       browsers: ['last 1 version'],
       compress: true

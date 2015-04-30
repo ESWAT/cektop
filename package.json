@@ -24,6 +24,8 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "nib": "^1.1.0",
+    "postcss": "^4.1.7",
+    "postcss-nested": "^0.2.2",
     "run-sequence": "^1.1.0"
   },
   "repository": {
