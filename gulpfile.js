@@ -75,6 +75,33 @@ gulp.task('connect:rel', function() {
   });
 });
 
+gulp.task('css:dev', function() {
+  return gulp.src([paths.css, '!**/_*.css'])
+    .pipe(plumber())
+      .pipe(sourcemaps.init())
+    .pipe(postcss([
+      nested,
+      cssnext({
+        browsers: ['last 1 version']
+      })
+    ]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.release + 'css/'))
+    .pipe(connect.reload());
+});
+
+gulp.task('css:rel', function() {
+  return gulp.src([paths.css, '!**/_*.css'])
+  .pipe(postcss([
+    nested,
+    cssnext({
+      browsers: ['last 1 version'],
+      compress: true
+    })
+  ]))
+    .pipe(gulp.dest(paths.release + 'css/'))
+});
+
 gulp.task('imagemin:dev', function() {
   return gulp.src(paths.images)
     .pipe(plumber())
@@ -121,33 +148,6 @@ gulp.task('jade:rel', function() {
       locals: locals
     }))
     .pipe(gulp.dest(paths.release))
-});
-
-gulp.task('css:dev', function() {
-  return gulp.src([paths.css, '!**/_*.css'])
-    .pipe(plumber())
-      .pipe(sourcemaps.init())
-    .pipe(postcss([
-      nested,
-      cssnext({
-        browsers: ['last 1 version']
-      })
-    ]))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.release + 'css/'))
-    .pipe(connect.reload());
-});
-
-gulp.task('css:rel', function() {
-  return gulp.src([paths.css, '!**/_*.css'])
-  .pipe(postcss([
-    nested,
-    cssnext({
-      browsers: ['last 1 version'],
-      compress: true
-    })
-  ]))
-    .pipe(gulp.dest(paths.release + 'css/'))
 });
 
 // Start server in development mode
