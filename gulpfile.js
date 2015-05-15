@@ -108,6 +108,25 @@ gulp.task('css:rel', function() {
     .pipe(gulp.dest(paths.release + 'css/'))
 });
 
+gulp.task('html:dev', function() {
+  return gulp.src([paths.jade, '!**/_*.jade'])
+    .pipe(plumber())
+    .pipe(jade({
+      pretty: true,
+      locals: locals
+    }))
+    .pipe(gulp.dest(paths.release))
+    .pipe(connect.reload());
+});
+
+gulp.task('html:rel', function() {
+  return gulp.src([paths.jade, '!**/_*.jade'])
+    .pipe(jade({
+      locals: locals
+    }))
+    .pipe(gulp.dest(paths.release))
+});
+
 gulp.task('imagemin:dev', function() {
   return gulp.src(paths.images)
     .pipe(plumber())
@@ -135,25 +154,6 @@ gulp.task('js:rel', function() {
     .pipe(babel())
     .pipe(uglify())
     .pipe(gulp.dest(paths.release + 'js/'))
-});
-
-gulp.task('html:dev', function() {
-  return gulp.src([paths.jade, '!**/_*.jade'])
-    .pipe(plumber())
-    .pipe(jade({
-      pretty: true,
-      locals: locals
-    }))
-    .pipe(gulp.dest(paths.release))
-    .pipe(connect.reload());
-});
-
-gulp.task('html:rel', function() {
-  return gulp.src([paths.jade, '!**/_*.jade'])
-    .pipe(jade({
-      locals: locals
-    }))
-    .pipe(gulp.dest(paths.release))
 });
 
 // Start server in development mode
