@@ -39,7 +39,7 @@ gulp.task('clean', function(cb) {
 
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['js:dev']);
-  gulp.watch(paths.jade, ['jade:dev']);
+  gulp.watch(paths.jade, ['html:dev']);
   gulp.watch(paths.css, ['css:dev']);
   gulp.watch(paths.images, ['imagemin:dev']);
   gulp.watch(paths.assets, ['assets']);
@@ -134,7 +134,7 @@ gulp.task('js:rel', function() {
     .pipe(gulp.dest(paths.release + 'js/'))
 });
 
-gulp.task('jade:dev', function() {
+gulp.task('html:dev', function() {
   return gulp.src([paths.jade, '!**/_*.jade'])
     .pipe(plumber())
     .pipe(jade({
@@ -145,7 +145,7 @@ gulp.task('jade:dev', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('jade:rel', function() {
+gulp.task('html:rel', function() {
   return gulp.src([paths.jade, '!**/_*.jade'])
     .pipe(jade({
       locals: locals
@@ -156,7 +156,7 @@ gulp.task('jade:rel', function() {
 // Start server in development mode
 gulp.task('default', ['clean'], function(cb) {
   runSequence([
-      'jade:dev',
+      'html:dev',
       'css:dev',
       'js:dev',
       'assets',
@@ -171,7 +171,7 @@ gulp.task('default', ['clean'], function(cb) {
 // Start server in preview mode
 gulp.task('preview', ['clean'], function(cb) {
   runSequence([
-      'jade:rel',
+      'html:rel',
       'csss:rel',
       'js:rel',
       'assets',
@@ -184,7 +184,7 @@ gulp.task('preview', ['clean'], function(cb) {
 // Build optimized files
 gulp.task('build', function(cb) {
   runSequence('clean', [
-    'jade:rel',
+    'html:rel',
     'css:rel',
     'js:rel',
     'assets',
