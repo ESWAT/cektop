@@ -9,6 +9,7 @@ var pkg         = require('./package.json'),
     imagemin    = require('gulp-imagemin'),
     jade        = require('gulp-jade'),
     nested      = require('postcss-nested'),
+    mixins      = require('postcss-mixins'),
     plumber     = require('gulp-plumber'),
     postcss     = require('gulp-postcss'),
     runSequence = require('run-sequence'),
@@ -80,6 +81,7 @@ gulp.task('css:dev', function() {
     .pipe(plumber())
       .pipe(sourcemaps.init())
     .pipe(postcss([
+      mixins,
       nested,
       cssnext({
         browsers: ['last 1 version']
@@ -93,6 +95,7 @@ gulp.task('css:dev', function() {
 gulp.task('css:rel', function() {
   return gulp.src([paths.css, '!**/_*.css'])
   .pipe(postcss([
+    mixins,
     nested,
     cssnext({
       browsers: ['last 1 version'],
