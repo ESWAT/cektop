@@ -13,6 +13,7 @@ var pkg         = require('./package.json'),
     plumber     = require('gulp-plumber'),
     postcss     = require('gulp-postcss'),
     runSequence = require('run-sequence'),
+    simplevars  = require('postcss-simple-vars'),
     sourcemaps  = require('gulp-sourcemaps'),
     uglify      = require('gulp-uglify');
 
@@ -82,6 +83,7 @@ gulp.task('css:dev', function() {
       .pipe(sourcemaps.init())
     .pipe(postcss([
       mixins,
+      simplevars,
       nested,
       cssnext({
         browsers: ['last 1 version']
@@ -96,6 +98,7 @@ gulp.task('css:rel', function() {
   return gulp.src([paths.css, '!**/_*.css'])
   .pipe(postcss([
     mixins,
+    simplevars,
     nested,
     cssnext({
       browsers: ['last 1 version'],

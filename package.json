@@ -25,6 +25,7 @@
     "gulp-uglify": "^1.2.0",
     "postcss-mixins": "^0.3.0",
     "postcss-nested": "^0.3.1",
+    "postcss-simple-vars": "^0.3.0",
     "run-sequence": "^1.1.0"
   },
   "repository": {
