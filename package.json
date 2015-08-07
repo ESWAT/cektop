@@ -24,7 +24,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "main-bower-files": "^2.9.0",
-    "postcss-mixins": "^0.3.0",
+    "postcss-mixins": "^0.4.0",
     "postcss-nested": "^0.3.1",
     "postcss-simple-vars": "^0.3.0",
     "run-sequence": "^1.1.0"
