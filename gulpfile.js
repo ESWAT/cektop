@@ -1,21 +1,22 @@
-var pkg         = require('./package.json'),
-    gulp        = require('gulp'),
-
-    babel       = require('gulp-babel'),
-    connect     = require('gulp-connect'),
-    cssnext     = require("cssnext"),
-    del         = require('del'),
-    ghPages     = require('gulp-gh-pages'),
-    imagemin    = require('gulp-imagemin'),
-    jade        = require('gulp-jade'),
-    nested      = require('postcss-nested'),
-    mixins      = require('postcss-mixins'),
-    plumber     = require('gulp-plumber'),
-    postcss     = require('gulp-postcss'),
-    runSequence = require('run-sequence'),
-    simplevars  = require('postcss-simple-vars'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    uglify      = require('gulp-uglify');
+var pkg            = require('./package.json'),
+    gulp           = require('gulp'),
+    
+    babel          = require('gulp-babel'),
+    connect        = require('gulp-connect'),
+    cssnext        = require("cssnext"),
+    del            = require('del'),
+    ghPages        = require('gulp-gh-pages'),
+    imagemin       = require('gulp-imagemin'),
+    jade           = require('gulp-jade'),
+    nested         = require('postcss-nested'),
+    mainBowerFiles = require('main-bower-files'),
+    mixins         = require('postcss-mixins'),
+    plumber        = require('gulp-plumber'),
+    postcss        = require('gulp-postcss'),
+    runSequence    = require('run-sequence'),
+    simplevars     = require('postcss-simple-vars'),
+    sourcemaps     = require('gulp-sourcemaps'),
+    uglify         = require('gulp-uglify');
 
 var paths = {
   assets  : 'src/assets/**/*',
@@ -55,6 +56,11 @@ gulp.task('assets', function() {
   return gulp.src(paths.assets)
     .pipe(plumber())
     .pipe(gulp.dest(paths.release + 'assets/'));
+});
+
+gulp.task('bower', function() {
+  return gulp.src(mainBowerFiles())
+    .pipe(gulp.dest(paths.release + 'lib/'))
 });
 
 gulp.task('cname', function() {
@@ -162,6 +168,7 @@ gulp.task('default', ['clean'], function(cb) {
       'html:dev',
       'css:dev',
       'js:dev',
+      'bower',
       'assets',
       'imagemin:dev',
     ], [
@@ -177,6 +184,7 @@ gulp.task('preview', ['clean'], function(cb) {
       'html:rel',
       'csss:rel',
       'js:rel',
+      'bower,',
       'assets',
       'imagemin:rel',
     ],
@@ -190,6 +198,7 @@ gulp.task('build', function(cb) {
     'html:rel',
     'css:rel',
     'js:rel',
+    'bower',
     'assets',
     'cname',
     'imagemin:rel'
