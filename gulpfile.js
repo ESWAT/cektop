@@ -35,8 +35,8 @@ var locals = {
   version     : pkg.version
 }
 
-gulp.task('clean', function(cb) {
-  del(paths.release, cb);
+gulp.task('clean', function() {
+  del(paths.release);
 });
 
 gulp.task('watch', function () {
