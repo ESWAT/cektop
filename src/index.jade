@@ -1,15 +1,7 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="utf-8")
-    title= title
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(name="author", content="#{author}")
-    meta(name="description", content="#{description}")
-    link(rel="stylesheet", href="css/app.css")
-  body
-    .container
-      h1= title
-      p= description
-      a(href="https://github.com/ESWAT/cektop/archive/v#{version}.zip") Download
-      a(href="https://github.com/ESWAT/CEKTOP/") View Source
+extends ./layout/_layout.jade
+
+block content
+  h1= title
+  p= description
+  a(href="https://github.com/ESWAT/cektop/archive/v#{version}.zip") Download
+  a(href="https://github.com/ESWAT/CEKTOP/") View Source
