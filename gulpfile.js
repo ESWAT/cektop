@@ -1,6 +1,6 @@
 var pkg            = require('./package.json'),
     gulp           = require('gulp'),
-    
+
     babel          = require('gulp-babel'),
     connect        = require('gulp-connect'),
     cssnext        = require("cssnext"),
@@ -8,6 +8,7 @@ var pkg            = require('./package.json'),
     ghPages        = require('gulp-gh-pages'),
     imagemin       = require('gulp-imagemin'),
     jade           = require('gulp-jade'),
+    lost           = require('lost'),
     nested         = require('postcss-nested'),
     mainBowerFiles = require('main-bower-files'),
     mixins         = require('postcss-mixins'),
@@ -91,6 +92,7 @@ gulp.task('css:dev', function() {
       mixins,
       simplevars,
       nested,
+      lost,
       cssnext({
         browsers: ['last 1 version']
       })
@@ -106,6 +108,7 @@ gulp.task('css:rel', function() {
     mixins,
     simplevars,
     nested,
+    lost,
     cssnext({
       browsers: ['last 1 version'],
       compress: true

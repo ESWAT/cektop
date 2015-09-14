@@ -11,10 +11,7 @@ body {
   text-align: center;
   background: #1c1e20;
   color: white;
-}
-
-.container {
-  margin: 0 auto;
+  lost-align: middle-center;
 }
 
 h1 {
@@ -57,13 +54,6 @@ a {
 }
 
 @media (min-width: 769px) {
-  .container {
-    width: 32rem;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
   h1 {
     font-size: 4.8rem;
   }
