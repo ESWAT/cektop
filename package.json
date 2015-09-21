@@ -25,6 +25,7 @@
     "gulp-uglify": "^1.4.1",
     "lost": "^6.6.0",
     "main-bower-files": "^2.9.0",
+    "postcss-import": "^7.0.0",
     "postcss-mixins": "^1.0.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.0.0",

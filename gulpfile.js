@@ -1,6 +1,7 @@
 var pkg            = require('./package.json'),
     gulp           = require('gulp'),
 
+    atImport       = require('postcss-import'),
     babel          = require('gulp-babel'),
     connect        = require('gulp-connect'),
     cssnext        = require("cssnext"),
@@ -89,6 +90,7 @@ gulp.task('css:dev', function() {
     .pipe(plumber())
       .pipe(sourcemaps.init())
     .pipe(postcss([
+      atImport,
       mixins,
       simplevars,
       nested,
@@ -105,6 +107,7 @@ gulp.task('css:dev', function() {
 gulp.task('css:rel', function() {
   return gulp.src([paths.css, '!**/_*.css'])
   .pipe(postcss([
+    atImport,
     mixins,
     simplevars,
     nested,
