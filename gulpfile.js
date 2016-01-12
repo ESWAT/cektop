@@ -11,7 +11,6 @@ var pkg            = require('./package.json'),
     jade           = require('gulp-jade'),
     lost           = require('lost'),
     nested         = require('postcss-nested'),
-    mainBowerFiles = require('main-bower-files'),
     mixins         = require('postcss-mixins'),
     plumber        = require('gulp-plumber'),
     postcss        = require('gulp-postcss'),
@@ -58,11 +57,6 @@ gulp.task('assets', function() {
   return gulp.src(paths.assets)
     .pipe(plumber())
     .pipe(gulp.dest(paths.release + 'assets/'));
-});
-
-gulp.task('bower', function() {
-  return gulp.src(mainBowerFiles())
-    .pipe(gulp.dest(paths.release + 'lib/'))
 });
 
 gulp.task('cname', function() {
@@ -174,7 +168,6 @@ gulp.task('default', ['clean'], function(cb) {
       'html:dev',
       'css:dev',
       'js:dev',
-      'bower',
       'assets',
       'imagemin:dev',
     ], [
@@ -190,7 +183,6 @@ gulp.task('preview', ['clean'], function(cb) {
       'html:rel',
       'csss:rel',
       'js:rel',
-      'bower,',
       'assets',
       'imagemin:rel',
     ],
@@ -204,7 +196,6 @@ gulp.task('build', function(cb) {
     'html:rel',
     'css:rel',
     'js:rel',
-    'bower',
     'assets',
     'cname',
     'imagemin:rel'
