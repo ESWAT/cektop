@@ -24,8 +24,8 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.4.1",
     "lost": "^6.6.1",
-    "postcss-import": "^7.0.0",
-    "postcss-mixins": "^3.0.2",
+    "postcss-import": "^8.0.2",
+    "postcss-mixins": "^4.0.1",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.0.1",
     "run-sequence": "^1.1.3"
