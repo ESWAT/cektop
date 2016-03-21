@@ -3,6 +3,7 @@ var pkg            = require('./package.json'),
 
     atImport       = require('postcss-import'),
     babel          = require('gulp-babel'),
+    colorFunction  = require('postcss-color-function'),
     connect        = require('gulp-connect'),
     cssnext        = require("postcss-cssnext"),
     del            = require('del'),
@@ -89,6 +90,7 @@ gulp.task('css:dev', function() {
       simplevars,
       nested,
       lost,
+      colorFunction,
       cssnext({
         browsers: ['last 1 version']
       })
@@ -106,6 +108,7 @@ gulp.task('css:rel', function() {
     simplevars,
     nested,
     lost,
+    colorFunction,
     cssnext({
       browsers: ['last 1 version'],
       compress: true
