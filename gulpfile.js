@@ -4,6 +4,7 @@ var pkg            = require('./package.json'),
     atImport       = require('postcss-import'),
     babel          = require('gulp-babel'),
     colorFunction  = require('postcss-color-function'),
+    concat         = require('gulp-concat'),
     connect        = require('gulp-connect'),
     cssnext        = require("postcss-cssnext"),
     del            = require('del'),
@@ -26,6 +27,7 @@ var paths = {
   images  : 'src/images/**/*.{png,jpg,gif}',
   jade    : 'src/**/*.jade',
   scripts : 'src/script/**/*.js',
+  lib     : '/src/_lib/**/*.js',
   css     : 'src/css/**/*.css',
   release : 'release/'
 };
@@ -169,12 +171,28 @@ gulp.task('js:rel', function() {
     .pipe(gulp.dest(paths.release + 'js/'))
 });
 
+gulp.task('lib:dev', function() {
+  return gulp.src([paths.lib, '!**/_*.js'])
+    .pipe(sourcemaps.init())
+    .pipe(concat('lib.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.release + 'js/'))
+});
+
+gulp.task('lib:rel', function() {
+  return gulp.src([paths.lib, '!**/_*.js'])
+    .pipe(sourcemaps.init())
+    .pipe(concat('lib.js'))
+    .pipe(gulp.dest(paths.release + 'js/'))
+});
+
 // Start server in development mode
 gulp.task('default', ['clean'], function(cb) {
   runSequence([
       'html:dev',
       'css:dev',
       'js:dev',
+      'lib:dev',
       'assets',
       'imagemin:dev',
     ], [
@@ -190,6 +208,7 @@ gulp.task('preview', ['clean'], function(cb) {
       'html:rel',
       'csss:rel',
       'js:rel',
+      'lib:rel',
       'assets',
       'imagemin:rel',
     ],
@@ -203,6 +222,7 @@ gulp.task('build', function(cb) {
     'html:rel',
     'css:rel',
     'js:rel',
+    'lib:rel',
     'assets',
     'cname',
     'imagemin:rel'
