@@ -152,7 +152,9 @@ gulp.task('js:dev', function() {
   return gulp.src([paths.scripts, '!**/_*.js'])
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.release + 'js/'))
     .pipe(connect.reload());
@@ -160,7 +162,9 @@ gulp.task('js:dev', function() {
 
 gulp.task('js:rel', function() {
   return gulp.src([paths.scripts, '!**/_*.js'])
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(uglify())
     .pipe(gulp.dest(paths.release + 'js/'))
 });
