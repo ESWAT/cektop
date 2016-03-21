@@ -187,7 +187,7 @@ gulp.task('lib:rel', function() {
 });
 
 // Start server in development mode
-gulp.task('default', ['clean'], function(cb) {
+gulp.task('default', ['clean'], function() {
   runSequence([
       'html:dev',
       'css:dev',
@@ -198,12 +198,11 @@ gulp.task('default', ['clean'], function(cb) {
     ], [
       'connect:dev',
       'watch'
-    ]
-  , cb);
+    ]);
 });
 
 // Start server in preview mode
-gulp.task('preview', ['clean'], function(cb) {
+gulp.task('preview', ['clean'], function() {
   runSequence([
       'html:rel',
       'csss:rel',
@@ -212,12 +211,11 @@ gulp.task('preview', ['clean'], function(cb) {
       'assets',
       'imagemin:rel',
     ],
-    'connect:rel'
-  , cb);
+    'connect:rel');
 });
 
 // Build optimized files
-gulp.task('build', function(cb) {
+gulp.task('build', function() {
   runSequence('clean', [
     'html:rel',
     'css:rel',
@@ -226,10 +224,10 @@ gulp.task('build', function(cb) {
     'assets',
     'cname',
     'imagemin:rel'
-  ], cb)
+  ])
 });
 
 // Deploy to GitHub Pages
-gulp.task('shipit', function(cb) {
-  runSequence('build', 'deploy', cb);
+gulp.task('shipit', function() {
+  runSequence('build', 'deploy');
 });
