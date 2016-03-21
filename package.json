@@ -24,6 +24,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "lost": "^6.7.2",
+    "normalize.css": "^4.0.0",
     "postcss-color-function": "^2.0.1",
     "postcss-cssnext": "^2.4.0",
     "postcss-import": "^8.0.2",
