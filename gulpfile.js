@@ -22,14 +22,14 @@ var pkg            = require('./package.json'),
     uglify         = require('gulp-uglify');
 
 var paths = {
-  assets  : 'src/assets/**/*',
-  cname   : 'src/CNAME',
-  images  : 'src/images/**/*.{png,jpg,gif}',
-  jade    : 'src/**/*.jade',
-  scripts : 'src/script/**/*.js',
-  lib     : '/src/_lib/**/*.js',
-  css     : 'src/css/**/*.css',
-  release : 'release/'
+  assets  : __dirname + 'src/assets/**/*',
+  cname   : __dirname + 'src/CNAME',
+  images  : __dirname + 'src/images/**/*.{png,jpg,gif}',
+  jade    : __dirname + 'src/**/*.jade',
+  scripts : __dirname + 'src/script/**/*.js',
+  lib     : __dirname + '/src/_lib/**/*.js',
+  css     : __dirname + 'src/css/**/*.css',
+  release : __dirname + 'release/'
 };
 
 var locals = {
