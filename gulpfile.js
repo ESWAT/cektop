@@ -10,7 +10,7 @@ var pkg            = require('./package.json'),
     del            = require('del'),
     ghPages        = require('gulp-gh-pages'),
     imagemin       = require('gulp-imagemin'),
-    jade           = require('gulp-jade'),
+    pug            = require('gulp-pug'),
     lost           = require('lost'),
     nested         = require('postcss-nested'),
     mixins         = require('postcss-mixins'),
@@ -25,7 +25,7 @@ var paths = {
   assets  : 'src/assets/**/*',
   cname   : 'src/CNAME',
   images  : 'src/images/**/*.{png,jpg,gif}',
-  jade    : 'src/**/*.jade',
+  pug    : 'src/**/*.pug',
   scripts : 'src/script/**/*.js',
   lib     : '/src/_lib/**/*.js',
   css     : 'src/css/**/*.css',
@@ -45,14 +45,14 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['js:dev']);
-  gulp.watch(paths.jade, ['html:dev']);
+  gulp.watch(paths.pug, ['html:dev']);
   gulp.watch(paths.css, ['css:dev']);
   gulp.watch(paths.images, ['imagemin:dev']);
   gulp.watch(paths.assets, ['assets']);
 });
 
 gulp.task('deploy', function() {
-  gulp.src('./release/**/*')
+  return gulp.src('./release/**/*')
     .pipe(ghPages());
 });
 
@@ -120,9 +120,9 @@ gulp.task('css:rel', function() {
 });
 
 gulp.task('html:dev', function() {
-  return gulp.src([paths.jade, '!**/_*.jade'])
+  return gulp.src([paths.pug, '!**/_*.pug'])
     .pipe(plumber())
-    .pipe(jade({
+    .pipe(pug({
       pretty: true,
       locals: locals
     }))
@@ -131,8 +131,8 @@ gulp.task('html:dev', function() {
 });
 
 gulp.task('html:rel', function() {
-  return gulp.src([paths.jade, '!**/_*.jade'])
-    .pipe(jade({
+  return gulp.src([paths.pug, '!**/_*.pug'])
+    .pipe(pug({
       locals: locals
     }))
     .pipe(gulp.dest(paths.release))

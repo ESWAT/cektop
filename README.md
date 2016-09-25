@@ -6,7 +6,7 @@
 
 CEKTOP helps you bootstrap your website or app using a Gulp & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript.
 
-Out of the box CEKTOP compiles Jade and CSS using PostCSS, compresses JS files with UglifyJS and compresses images with gulp-imagemin.
+Out of the box CEKTOP compiles Pug and CSS using PostCSS, compresses JS files with UglifyJS and compresses images with gulp-imagemin.
 
 If there’s a Gulp plugin for it you can use it; remove and extend things as needed. Once you’re satisfied with your work you can publish it with a single Gulp task.
 
@@ -51,7 +51,7 @@ All your development work is done in the `src` directory. The files in `src` wil
 ├─ package.json
 ```
 
-All of the magic is done in `gulpfile.js`, so take a look at that if you want to make modifications. Your Jade files also have visibility to some of the information stored in `package.json`, which you should modify to suit your project (you can see what is exposed in `gulpfile.js` under the Jade task).
+All of the magic is done in `gulpfile.js`, so take a look at that if you want to make modifications. Your Pug files also have visibility to some of the information stored in `package.json`, which you should modify to suit your project (you can see what is exposed in `gulpfile.js` under the Pug task).
 
 ## License
 
