@@ -2,7 +2,9 @@
 
 [![Dependency Status](https://david-dm.org/eswat/cektop.svg)](https://david-dm.org/eswat/cektop)
 
-> A static site generator for GitHub Pages
+> Gulp-powered static site boilerplate for GitHub Pages.
+
+**Note:** The content below is from previous versions and is only here for general reference.
 
 CEKTOP helps you bootstrap your website or app using a Gulp & Node.js stack that’s very configurable. So you’re not stuck using the default setup of Jekyll or plain jane HTML/CSS/JavaScript.
 
