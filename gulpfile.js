@@ -44,9 +44,7 @@ gulp.task('watch', () => {
 
 gulp.task('deploy', () => {
   gulp.src('./release/**/*')
-    .pipe(ghPages({
-      branch: 'master'
-    }));
+    .pipe(ghPages());
 });
 
 gulp.task('assets',() => {
