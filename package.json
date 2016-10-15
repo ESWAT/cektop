@@ -1,6 +1,6 @@
 {
   "name": "CEKTOP",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "description": "Gulp-powered static site boilerplate for GitHub Pages.",
   "main": "gulpfile.js",
   "private": true,
