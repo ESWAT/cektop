@@ -152,7 +152,7 @@ gulp.task('pug:dev',() => {
     }))
     .pipe(rename((path) => {
       if (path.basename=='index') return;
-      path.dirname = path.basename.split('-').join('/');
+      path.dirname = path.basename;
       path.basename = 'index';
       path.extname = '.html';
     }))
@@ -165,7 +165,7 @@ gulp.task('pug:rel',() => {
     .pipe(pug())
     .pipe(rename((path) => {
       if (path.basename=='index') return;
-      path.dirname = path.basename.split('-').join('/');
+      path.dirname = path.basename;
       path.basename = 'index';
       path.extname = '.html';
     }))
