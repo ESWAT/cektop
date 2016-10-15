@@ -25,6 +25,7 @@ var paths = {
     cname   : 'src/CNAME',
     images  : 'src/images/**/*.{png,jpg,gif,svg}',
     pug     : 'src/**/*.pug',
+    lib     : 'src/lib/**/*.js',
     js      : 'src/js/**/*.js',
     css     : 'src/css/**/*.css',
     release : 'release/'
@@ -142,6 +143,21 @@ gulp.task('css:rel',() => {
     .pipe(gulp.dest(paths.release + 'css/'))
 });
 
+gulp.task('lib:dev',() => {
+  return gulp.src([paths.lib, '!**/_*.js'])
+    .pipe(sourcemaps.init())
+    .pipe(concat('lib.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.release + 'js/'))
+});
+
+gulp.task('lib:rel',() => {
+  return gulp.src([paths.lib, '!**/_*.js'])
+    .pipe(concat('lib.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.release + 'js/'))
+});
+
 gulp.task('pug:dev',() => {
   return gulp.src([paths.pug, '!**/_*.pug'])
     .pipe(plumber())
@@ -176,6 +192,7 @@ gulp.task('default', ['clean'], cb => {
       'pug:dev',
       'css:dev',
       'js:dev',
+      'lib:dev',
       'assets',
       'imagemin:dev',
     ], [
@@ -191,6 +208,7 @@ gulp.task('preview', ['clean'], cb => {
       'pug:rel',
       'css:rel',
       'js:rel',
+      'lib:rel',
       'assets',
       'imagemin:rel',
     ],
@@ -204,6 +222,7 @@ gulp.task('build', cb => {
     'pug:rel',
     'css:rel',
     'js:rel',
+    'lib:rel',
     'assets',
     'cname',
     'imagemin:rel'
