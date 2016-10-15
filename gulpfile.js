@@ -74,39 +74,6 @@ gulp.task('connect:rel',() => {
   });
 });
 
-gulp.task('imagemin:dev',() => {
-  return gulp.src(paths.images)
-    .pipe(plumber())
-    .pipe(gulp.dest(paths.release + 'images/'))
-});
-
-gulp.task('imagemin:rel',() => {
-  return gulp.src(paths.images)
-    .pipe(imagemin())
-    .pipe(gulp.dest(paths.release + 'images/'))
-});
-
-gulp.task('js:dev',() => {
-  return gulp.src([paths.js, '!**/_*.js'])
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.release + 'js/'))
-    .pipe(connect.reload());
-});
-
-gulp.task('js:rel',() => {
-  return gulp.src([paths.js, '!**/_*.js'])
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.release + 'js/'))
-});
-
 gulp.task('css:dev',() => {
   return gulp.src([paths.css, '!**/_*.css'])
     .pipe(plumber())
@@ -141,6 +108,39 @@ gulp.task('css:rel',() => {
       })
     ]))
     .pipe(gulp.dest(paths.release + 'css/'))
+});
+
+gulp.task('imagemin:dev',() => {
+  return gulp.src(paths.images)
+    .pipe(plumber())
+    .pipe(gulp.dest(paths.release + 'images/'))
+});
+
+gulp.task('imagemin:rel',() => {
+  return gulp.src(paths.images)
+    .pipe(imagemin())
+    .pipe(gulp.dest(paths.release + 'images/'))
+});
+
+gulp.task('js:dev',() => {
+  return gulp.src([paths.js, '!**/_*.js'])
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.release + 'js/'))
+    .pipe(connect.reload());
+});
+
+gulp.task('js:rel',() => {
+  return gulp.src([paths.js, '!**/_*.js'])
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.release + 'js/'))
 });
 
 gulp.task('lib:dev',() => {
