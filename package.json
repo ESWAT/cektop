@@ -11,6 +11,7 @@
     "shipit": "gulp shipit"
   },
   "dependencies": {
+    "autoprefixer": "^8.5.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "gulp": "^3.8.11",
@@ -28,7 +29,6 @@
     "lost": "^8.2.0",
     "normalize.css": "^7.0.0",
     "postcss-color-function": "^4.0.0",
-    "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
     "postcss-mixins": "^6.1.0",
     "postcss-nested": "^2.1.2",

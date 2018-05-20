@@ -1,10 +1,10 @@
 var gulp          = require('gulp'),
     atImport      = require('postcss-import'),
+    autoprefixer  = require('autoprefixer'),
     babel         = require('gulp-babel'),
     colorFunction = require('postcss-color-function'),
     concat        = require('gulp-concat'),
     connect       = require('gulp-connect'),
-    cssnext       = require('postcss-cssnext'),
     ghPages       = require('gulp-gh-pages'),
     imagemin      = require('gulp-imagemin'),
     lost          = require('lost'),
@@ -85,9 +85,7 @@ gulp.task('css:dev',() => {
       nested,
       lost,
       colorFunction,
-      cssnext({
-        browsers: ['last 1 version']
-      })
+      autoprefixer
     ]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.release + 'css/'))
@@ -103,9 +101,7 @@ gulp.task('css:rel',() => {
       nested,
       lost,
       colorFunction,
-      cssnext({
-        browsers: ['last 1 version']
-      })
+      autoprefixer
     ]))
     .pipe(gulp.dest(paths.release + 'css/'))
 });
